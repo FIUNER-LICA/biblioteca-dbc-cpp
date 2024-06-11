@@ -1,6 +1,9 @@
-<div text-align="center">
+<div align="center">
 
 # Biblioteca para DbC en C++
+
+[Descripción](#descripción) • [Instalación](#instalación) • [Uso](#uso)
+
 </div>
 
 ## Descripción 
