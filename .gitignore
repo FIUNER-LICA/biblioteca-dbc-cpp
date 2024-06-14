@@ -1,0 +1,8 @@
+Doxyfile
+
+#Doxygen folders
+docs/doxygen
+docs/api
+
+#MkDocs folder
+dbc-library/
