@@ -2,7 +2,7 @@
 
 # Biblioteca para DbC en C++
 
-[Descripción](#descripción) • [Instalación](#instalación) • [Uso](#uso)
+[Descripción](#descripción) • [Documentación](#documentación) • [Instalación](#instalación) • [Uso](#uso)
 
 </div>
 
@@ -11,6 +11,10 @@
 Este repositorio contiene una biblioteca que permite implementar Diseño por Contratos en C++, proponiendo precondiciones, postcondiciones e invariantes para la declaración de los componentes del software.
 
 Además, se incluyen benchmarks para evaluar el rendimiento de la biblioteca bajo diferentes condiciones y escenarios.
+
+## Documentación
+
+Se recomienda el acceso a la documentación a través de una forma más interactiva en el [sitio web](https://fiuner-lica.github.io/biblioteca-dbc-cpp/)
 
 ## Instalación 
 
