@@ -12,7 +12,7 @@ parser.add_argument('-optimization', nargs='?', default=None, type=str, help="Ty
 
 args = parser.parse_args()
 
-call = f"./script.sh -r {args.num_repetitions}"
+call = f"./script_ciclos.sh -r {args.num_repetitions}"
 if args.optimization:
 	call+=f" -o {args.optimization}"
 else:
@@ -22,18 +22,15 @@ os.system(call)
 
 df = pd.read_csv("data/benchmark_output.csv")
 
-df_grouped = df.groupby(["assert_mode", "invariant_mode"])[["real_time", "user_time", "sys_time", "avg_memory"]].mean().reset_index()
+df_grouped = df.groupby(["assert_mode", "invariant_mode"])[["ciclos"]].mean().reset_index()
 
 
 plt.figure(figsize=(14,10))
 plt.suptitle("Benchmarks")
-plt.subplot(211)
-plt.title("Real time")
-sns.barplot(df_grouped, x="assert_mode", y="real_time", hue="invariant_mode")
+plt.subplot(111)
+plt.title("Ciclos de CPU")
+sns.boxplot(df_grouped, x="assert_mode", y="ciclos", hue="invariant_mode")
 
-plt.subplot(212)
-plt.title("User time")
-sns.barplot(df_grouped, x="assert_mode", y="user_time", hue="invariant_mode")
 
 #plt.subplot(223)
 #plt.title("Sys time")
