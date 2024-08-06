@@ -6,3 +6,4 @@ edit_uri: null
 nav:
   - Home: index.md 
   - API-Reference: apireference.md
+  - License: license.md

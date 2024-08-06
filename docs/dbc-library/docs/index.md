@@ -22,6 +22,7 @@ This library enables you to specify and enforce contracts (preconditions, postco
     - [Postcondition](#postconditions)
     - [Invariants](#invariants)
 - [API-Reference](apireference.md)
+- [License](license.md)
 
 ## Installation
 
