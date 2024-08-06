@@ -20,7 +20,8 @@ Se recomienda el acceso a la documentación a través de una forma más interact
 
 ## Estructura de directorios
 
-- Benchmarks:
+- Benchmarks
+- Casos
 - contract-lib
 - docs
 
