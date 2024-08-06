@@ -41,6 +41,7 @@ echo "assert_mode,invariant_mode,ciclos" > $output_file
 
 for assert_mode in "${assert_modes[@]}"; do
 	for invariant_mode in "${invariant_modes[@]}"; do
+		current_iterations=0
 		make ASSERT_MODE=$assert_mode INVARIANT_MODE=$invariant_mode 
 		for ((i=0 ; i<REPETITIONS ; i++)); do
 #			temp_file="./data/time_o_tmp.txt"
@@ -49,10 +50,11 @@ for assert_mode in "${assert_modes[@]}"; do
 #	                /usr/bin/time --output="$temp_file" -f "%e,%U,%S,%K" ./benchmark
 #			tiempo=$(<"$temp_file")
 #			echo "$assert_mode,$invariant_mode,$tiempo" >> $output_file
-
 #			rm "$temp_file"
       output=$(./benchmark)
       echo "$assert_mode,$invariant_mode,$output" >> $output_file
+      ((current_iterations++))
+      echo "$current_iterations/$REPETITIONS"
     done
 		make ASSERT_MODE=$assert_mode INVARIANT_MODE=$invariant_mode clean
 	done
