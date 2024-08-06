@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>API-Reference - DbC Library</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "API-Reference";
+        var mkdocs_page_input_path = "apireference.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> DbC Library
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">API-Reference</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#contractviolation_error">contract::violation_error</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#constructor">Constructor</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#member-functions">Member Functions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#contractinvariant">contract::Invariant</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#constructor_1">Constructor</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#member-functions_1">Member Functions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#contractcontract">contract::Contract</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#member-functions_2">Member Functions</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#contractprecondition">contract::precondition</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#contractpostcondition">contract::postcondition</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#macros">Macros</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#require">REQUIRE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ensure">ENSURE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#assure">ASSURE</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#invariant">INVARIANT</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">DbC Library</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">API-Reference</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="api-reference">API Reference</h2>
+<h3 id="classes">Classes</h3>
+<h4 id="contractviolation_error"><code>contract::violation_error</code></h4>
+<p>Represents an exception thrown when a contract violation occurs.</p>
+<h5 id="constructor">Constructor</h5>
+<pre><code class="language-cpp">violation_error(std::string msg);
+</code></pre>
+<p>Constructs a <code>violation_error</code> object with the specified error message.</p>
+<h5 id="member-functions">Member Functions</h5>
+<pre><code class="language-cpp">virtual const char* what() const noexcept;
+</code></pre>
+<p>Returns a string describing the exception.</p>
+<hr />
+<h4 id="contractinvariant"><code>contract::Invariant</code></h4>
+<p>Manages class invariants and performs invariant checks.</p>
+<h5 id="constructor_1">Constructor</h5>
+<pre><code class="language-cpp">Invariant();
+</code></pre>
+<h5 id="member-functions_1">Member Functions</h5>
+<pre><code class="language-cpp">void operator()(bool logix_exp, const std::string msg);
+</code></pre>
+<p>Overloaded function call operator to evaluate and enforce class invariants.</p>
+<pre><code class="language-cpp">void add_invariant(std::function&lt;bool()&gt; p_lambda);
+</code></pre>
+<p>Adds a new invariant to the collection.</p>
+<pre><code class="language-cpp">void check_invariant();
+</code></pre>
+<p>Check all invariants and throws <code>violation_error</code> if any invariant fails.</p>
+<hr />
+<h4 id="contractcontract"><code>contract::Contract</code></h4>
+<p>Handles logical expressions and throws exceptions for contract violations.</p>
+<h5 id="member-functions_2">Member Functions</h5>
+<pre><code class="language-cpp">void operator()(bool logic_exp, const std::string msg = &quot;&quot;);
+</code></pre>
+<p>Evaluates a logical expression and throws an exception with a specified message if the expression is false.</p>
+<h3 id="functions">Functions</h3>
+<h4 id="contractprecondition"><code>contract::precondition</code></h4>
+<p>Evaluates preconditions for a function or method.</p>
+<pre><code class="language-cpp">void precondition(const bool logic_exp, const std::string msg = &quot;&quot;);
+</code></pre>
+<p>Throws <code>violation_error</code> if <code>logic_exp</code> is false, with an optional error message.</p>
+<hr />
+<h4 id="contractpostcondition"><code>contract::postcondition</code></h4>
+<p>Evaluates postconditions for a function or method.</p>
+<pre><code class="language-cpp">void postcondition(const bool logic_exp, const std::string msg = &quot;&quot;);
+</code></pre>
+<p>Throws <code>violation_error</code> if <code>logic_exp</code> is false, with an optionar error message.</p>
+<h3 id="macros">Macros</h3>
+<p>Coming soon...</p>
+<h4 id="require"><code>REQUIRE</code></h4>
+<h4 id="ensure"><code>ENSURE</code></h4>
+<h4 id="assure"><code>ASSURE</code></h4>
+<h4 id="invariant"><code>INVARIANT</code></h4>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

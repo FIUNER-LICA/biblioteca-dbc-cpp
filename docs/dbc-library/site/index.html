@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="None" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>DbC Library</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> DbC Library
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#table-of-contents">Table of Contents</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#basic-usage">Basic Usage</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#features">Features</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#preconditions">Preconditions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#postconditions">Postconditions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#invariants">Invariants</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="apireference/">API-Reference</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">DbC Library</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Home</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="c-design-by-contract-library-documentation">C++ Design by Contract Library Documentation</h1>
+<p>This library enables you to specify and enforce contracts (preconditions, postconditions, and invariants) in your C++ code, aiming to promote robustness and reliability.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#basic-usage">Basic Usage</a></li>
+<li><a href="#features">Features</a><ul>
+<li><a href="#preconditions">Preconditions</a></li>
+<li><a href="#postconditions">Postcondition</a></li>
+<li><a href="#invariants">Invariants</a></li>
+</ul>
+</li>
+<li><a href="apireference/">API-Reference</a></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>To integrate the DbC library into your C++ project, follow these installation steps:</p>
+<ul>
+<li>Clone the repository from <a href="https://github.com/FIUNER-LICA/biblioteca-dbc-cpp">GitHub</a></li>
+</ul>
+<pre><code class="language-bash">git clone https://github.com/FIUNER-LICA/biblioteca-dbc-cpp.git
+</code></pre>
+<ul>
+<li>Include the <code>contract.h</code> header file in your project.</li>
+</ul>
+<pre><code class="language-cpp">#include &quot;contract.h&quot;
+</code></pre>
+<ul>
+<li>Ensure your compiler supports C++11 or later.</li>
+</ul>
+<h2 id="basic-usage">Basic Usage</h2>
+<p>Here's a basic example to get you started with the DbC library using pre and post conditions as functions:</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &quot;contract.h&quot;
+
+using namespace contract;
+
+void example_function(int x) {
+    precondition(x &gt; 0, &quot;x must be greater than 0&quot;);
+
+    // Function logic here
+
+    postcondition(x &lt; 100, &quot;x should be less than 100&quot;);
+}
+
+int main() {
+    try {
+        example_function(50);
+    } catch (const violation_error&amp; e) {
+        std::cerr &lt;&lt; &quot;Contract violation: &quot; &lt;&lt; e.what() &lt;&lt; std::endl;
+    }
+
+    return 0;
+}
+</code></pre>
+<h2 id="features">Features</h2>
+<h3 id="preconditions">Preconditions</h3>
+<p>Preconditions specify conditions that must be true at the entry of a function or method. Here's how to use preconditions effectively:</p>
+<ul>
+<li><strong>Function Syntax</strong>:<ul>
+<li>As function: <code>precondition(expression, message)</code></li>
+<li>As class: <code>precond(expression, message)</code></li>
+<li>As macro: <code>REQUIRE(expression, message)</code></li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-cpp">void example_function(int x) {
+    precond(x &gt; 0, &quot;x must be greater than 0&quot;); // As class
+
+    precondition(x &gt; 0, &quot;x must be greater than 0&quot;); // As function
+
+    REQUIRE(x &gt; 0, &quot;x must be greater than 0&quot;); // As macro
+
+    // Function logic.
+}
+</code></pre>
+<h3 id="postconditions">Postconditions</h3>
+<p>Postconditions specify conditions that must be true at the exit of a function or method. They validate the expected outcomes and state changes after the execution of a routine. Here's how to use postconditions effectively:</p>
+<ul>
+<li><strong>Function Syntax</strong>:<ul>
+<li>As function: <code>postcondition(expression, message)</code></li>
+<li>As class: <code>postcond(expression, message)</code></li>
+<li>As macro: <code>ENSURE(expression, message)</code></li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-cpp">void example_function(int x) {    
+    //Function logic.   
+
+    postcondition(x &lt; 100, &quot;x should be less than 100&quot;); // As function
+
+    postcond(x &lt; 100, &quot;x should be less than 100&quot;); // As class
+
+    ENSURE(x &lt; 100, &quot;x should be less than 100&quot;); // As macro
+}
+</code></pre>
+<h3 id="invariants">Invariants</h3>
+<p>Invariants specify conditions that must be true for a class or object, ensuring its integrity throughout its lifecycle. Here's how to use invariants effectively:</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="apireference/" class="btn btn-neutral float-right" title="API-Reference">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="apireference/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.0
+Build Date UTC : 2024-07-30 18:16:12.190314+00:00
+-->
