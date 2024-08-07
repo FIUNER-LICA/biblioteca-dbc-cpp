@@ -9,7 +9,7 @@ date: 2024-08-06
 
 # C++ Design by Contract Library Documentation
 
-**Diaz Zamboni Javier E. - Insfrán Jordán F. - Garcia Justo**
+**Garcia Justo - Insfrán Jordán F. - Diaz Zamboni Javier E.**
 
 This library enables you to specify and enforce contracts (preconditions, postconditions, and invariants) in your C++ code, aiming to promote robustness and reliability.
 
