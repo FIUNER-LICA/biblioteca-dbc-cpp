@@ -55,6 +55,14 @@
     <li class="toctree-l3"><a class="reference internal" href="#postconditions">Postconditions</a>
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#invariants">Invariants</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#declaring-invariants">Declaring invariants</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#checking-invariants">Checking invariants</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#eror-handling">Eror handling</a>
+    </li>
+        </ul>
     </li>
         </ul>
     </li>
@@ -194,6 +202,37 @@ int main() {
 </code></pre>
 <h3 id="invariants">Invariants</h3>
 <p>Invariants specify conditions that must be true for a class or object, ensuring its integrity throughout its lifecycle. Here's how to use invariants effectively:</p>
+<h4 id="declaring-invariants">Declaring invariants</h4>
+<p>To include invariants in your class, two steps are required:</p>
+<ol>
+<li>Inheritating from contract::Invariant&lt;T&gt;</li>
+<li>Declare invariants  thin the class (tipically in the constructor)</li>
+</ol>
+<pre><code class="language-cpp">class Some_class : protected contract::Invariant&lt;Some_class&gt; // Inherit 
+{                                                            // from contract::Invariant&lt;T&gt;
+    public:
+        Some_class();
+        void some_method();
+}
+
+Some_class::Some_class() {
+    add_invariant(INVARIANT(bool_exp)); // Using macro
+
+    add_invariant([&amp;](){ return bool_exp;   }); // Using lambda
+}
+
+</code></pre>
+<h4 id="checking-invariants">Checking invariants</h4>
+<p>To verify that the invariants remain true after an operation that might compromise their consistency, you must call <code>check_invariant()</code>.</p>
+<pre><code class="language-cpp">void Some_class::some_method()
+{
+    // Method logic
+
+    check_invariant(); // Force invariants checks
+}
+</code></pre>
+<h4 id="eror-handling">Eror handling</h4>
+<p>If an invariant is violated, <code>check_invariant()</code> will typically throw an exception. You can catch these exceptions to handle errors gracefully, such as logging the issue or attempting to recover.</p>
               
             </div>
           </div><footer>
@@ -246,5 +285,5 @@ int main() {
 
 <!--
 MkDocs version : 1.6.0
-Build Date UTC : 2024-08-07 12:11:24.350679+00:00
+Build Date UTC : 2024-08-15 17:35:58.075132+00:00
 -->
