@@ -118,4 +118,40 @@ void example_function(int x) {
 ### Invariants
 Invariants specify conditions that must be true for a class or object, ensuring its integrity throughout its lifecycle. Here's how to use invariants effectively:
 
+#### Declaring invariants
+To include invariants in your class, two steps are required:
 
+1. Inheritating from contract::Invariant<T\>
+2. Declare invariants  thin the class (tipically in the constructor)
+
+```cpp
+class Some_class : protected contract::Invariant<Some_class> // Inherit 
+{                                                            // from contract::Invariant<T>
+    public:
+        Some_class();
+        void some_method();
+}
+
+Some_class::Some_class() {
+    add_invariant(INVARIANT(bool_exp)); // Using macro
+
+    add_invariant([&](){ return bool_exp;   }); // Using lambda
+}
+
+```
+
+#### Checking invariants
+To verify that the invariants remain true after an operation that might compromise their consistency, you must call `check_invariant()`.
+
+
+```cpp
+void Some_class::some_method()
+{
+    // Method logic
+
+    check_invariant(); // Force invariants checks
+}
+```
+
+#### Eror handling
+If an invariant is violated, `check_invariant()` will typically throw an exception. You can catch these exceptions to handle errors gracefully, such as logging the issue or attempting to recover.
