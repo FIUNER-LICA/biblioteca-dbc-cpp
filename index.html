@@ -60,9 +60,9 @@
     </li>
     <li class="toctree-l4"><a class="reference internal" href="#checking-invariants">Checking invariants</a>
     </li>
-    <li class="toctree-l4"><a class="reference internal" href="#eror-handling">Eror handling</a>
-    </li>
         </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#eror-handling">Eror handling</a>
     </li>
         </ul>
     </li>
@@ -206,7 +206,7 @@ int main() {
 <p>To include invariants in your class, two steps are required:</p>
 <ol>
 <li>Inheritating from contract::Invariant&lt;T&gt;</li>
-<li>Declare invariants  thin the class (tipically in the constructor)</li>
+<li>Declare invariants within the class (tipically in the constructor)</li>
 </ol>
 <pre><code class="language-cpp">class Some_class : protected contract::Invariant&lt;Some_class&gt; // Inherit 
 {                                                            // from contract::Invariant&lt;T&gt;
@@ -231,8 +231,15 @@ Some_class::Some_class() {
     check_invariant(); // Force invariants checks
 }
 </code></pre>
-<h4 id="eror-handling">Eror handling</h4>
-<p>If an invariant is violated, <code>check_invariant()</code> will typically throw an exception. You can catch these exceptions to handle errors gracefully, such as logging the issue or attempting to recover.</p>
+<h3 id="eror-handling">Eror handling</h3>
+<p>If a condition is violated, an exception will be thrown. You can catch these exceptions to handle errors gracefully, such as logging the issue or attempting to recover.</p>
+<pre><code class="language-cpp">try {
+    some_function(15);
+} catch (const violation_error&amp; e) {
+    std::cerr&lt;&lt;&quot;Contract violation: &quot;&lt;&lt; e.what() &lt;&lt; std::endl;
+    // Error handling
+}
+</code></pre>
               
             </div>
           </div><footer>
@@ -285,5 +292,5 @@ Some_class::Some_class() {
 
 <!--
 MkDocs version : 1.6.0
-Build Date UTC : 2024-08-15 18:00:56.369559+00:00
+Build Date UTC : 2024-08-15 18:30:59.449731+00:00
 -->
