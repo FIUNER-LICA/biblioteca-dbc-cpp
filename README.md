@@ -2,7 +2,7 @@
 
 # Biblioteca para DbC en C++
 
-## Diaz Zamboni Javier E. - Insfrán Jordán F. - Garcia Justo
+## Garcia Justo - Insfrán Jordán F. - Diaz Zamboni Javier E.
 
 [Descripción](#descripción) • [Documentación](#documentación) • [Estructura de directorios](#estructura-de-directorios) •[Instalación](#instalación) • [Uso](#uso)
 
@@ -20,10 +20,10 @@ Se recomienda el acceso a la documentación a través de una forma más interact
 
 ## Estructura de directorios
 
-- Benchmarks
-- Casos
-- contract-lib
-- docs
+- Benchmarks: scripts que permiten ejecutar benchmarks y la salida de los mismos.
+- Casos: casos implementados utilizando la biblioteca.
+- contract-lib: archivo header y cpp de la biblioteca.
+- docs: carpeta correspondiente a la documentación en doxygen y los archivos utilizados para generear el [sitio web](https://fiuner-lica.github.io/biblioteca-dbc-cpp/)
 
 ## Instalación
 
