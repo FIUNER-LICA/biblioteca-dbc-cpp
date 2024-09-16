@@ -33,4 +33,4 @@ Para utilizar la biblioteca simplemente clona este repositorio y realiza la incl
 
 <!-- TODO: agregar un ejemplo -->
 
-Para ejecutar los benchmarks se recomienda leer la documentación específica presente en su carpeta [*Benchmarks/README.md*](https://github.com/FIUNER-LICA/biblioteca-dbc-cpp/README.md)
+Para ejecutar los benchmarks se recomienda leer la documentación específica presente en su carpeta [*Benchmarks/README.md*](https://github.com/FIUNER-LICA/biblioteca-dbc-cpp/blob/main/Benchmarks/README.md)
