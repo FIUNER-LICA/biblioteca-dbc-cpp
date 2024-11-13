@@ -20,7 +20,7 @@ Además, se incluyen benchmarks para evaluar el rendimiento de la biblioteca baj
 
 ## Documentación
 
-Se recomienda el acceso a la documentación a través de una forma más interactiva en siguiente enlace: [sitio web de documentación](https://fiuner-lica.github.io/biblioteca-dbc-cpp/)
+Se recomienda el acceso a la documentación a través de una forma más interactiva en el siguiente enlace: [sitio web de documentación](https://fiuner-lica.github.io/biblioteca-dbc-cpp/)
 
 ## Estructura de directorios
 
