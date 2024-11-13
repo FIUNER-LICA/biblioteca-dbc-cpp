@@ -4,6 +4,8 @@
 
 ## Garcia Justo - Insfrán Jordán F. - Diaz Zamboni Javier E.
 
+![DOI](https://doi.org/10.5281/zenodo.14139843)
+
 [Descripción](#descripción) • [Documentación](#documentación) • [Estructura de directorios](#estructura-de-directorios) •[Instalación](#instalación) • [Uso](#uso)
 
 </div>
