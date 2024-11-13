@@ -7,6 +7,7 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14139844.svg)](https://doi.org/10.5281/zenodo.14139844)
 
 
+
 [Descripción](#descripción) • [Documentación](#documentación) • [Estructura de directorios](#estructura-de-directorios) •[Instalación](#instalación) • [Uso](#uso)
 
 </div>
